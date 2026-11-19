@@ -37,8 +37,8 @@ h1 { margin: 0; font-size: 1.4rem; letter-spacing: 0.05em; }
 
 #screen {
   display: block;
-  width: min(88vw, 588px);
-  height: calc(min(88vw, 588px) * 64 / 98);
+  width: min(88vw, 528px);
+  height: calc(min(88vw, 528px) * 154 / 176);
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;

@@ -2,8 +2,8 @@
   const TILE = 11;
   const COLS = 16;
   const ROWS = 14;
-  const SCREEN_W = 98;
-  const SCREEN_H = 64;
+  const SCREEN_W = COLS * TILE;
+  const SCREEN_H = ROWS * TILE;
 
   const EMPTY = 0, FLOOR = 1, BOX = 2, PLAYER = 3, WALL = 4, TARGET = 5, BOX_ON_TARGET = 6, PLAYER_ON_TARGET = 7;
 
@@ -402,15 +402,16 @@
   function renderTitle() {
     const pal = colors[theme];
     fill(0, 0, SCREEN_W, SCREEN_H, pal.bg);
-    centerText(['BOX WORLD'], 16, pal.fg);
-    if (blink < 30) centerText(['pressione uma tecla'], 40, pal.fg);
+    centerText(['BOX WORLD'], SCREEN_H / 2 - 10, pal.fg);
+    if (blink < 30) centerText(['pressione uma tecla'], SCREEN_H / 2 + 10, pal.fg);
   }
 
   function renderMenu() {
     const pal = colors[theme];
     fill(0, 0, SCREEN_W, SCREEN_H, pal.bg);
+    const menuTop = (SCREEN_H - menuItems.length * 11) / 2;
     menuItems.forEach((item, i) => {
-      const y = 4 + i * 11;
+      const y = menuTop + i * 11;
       if (i === menuIndex) fill(2, y - 1, SCREEN_W - 4, 10, pal.fg);
       ctx.fillStyle = i === menuIndex ? pal.bg : pal.fg;
       ctx.font = '7px monospace';
@@ -423,29 +424,33 @@
     const pal = colors[theme];
     fill(0, 0, SCREEN_W, SCREEN_H, pal.bg);
     const lines = INSTRUCTION_PAGES[instructionsPage].split('\n');
+    const top = (SCREEN_H - lines.length * 8) / 2;
     ctx.fillStyle = pal.fg;
     ctx.font = '7px monospace';
     ctx.textBaseline = 'top';
-    lines.forEach((line, i) => ctx.fillText(line, 3, 2 + i * 8));
+    lines.forEach((line, i) => ctx.fillText(line, 3, top + i * 8));
     ctx.fillText((instructionsPage + 1) + '/' + INSTRUCTION_PAGES.length, SCREEN_W - 16, SCREEN_H - 9);
   }
 
   function renderLevelSelect() {
     const pal = colors[theme];
     fill(0, 0, SCREEN_W, SCREEN_H, pal.bg);
-    centerText(['Escolha a fase'], 2, pal.fg);
+    const midY = SCREEN_H / 2;
+    centerText(['Escolha a fase'], midY - 28, pal.fg);
     const best = bestFor(levelSelectChoice);
-    centerText(['< ' + (levelSelectChoice + 1) + ' >'], 20, pal.fg);
-    centerText([best ? ('recorde: ' + best) : 'sem recorde'], 40, pal.fg);
+    centerText(['< ' + (levelSelectChoice + 1) + ' >'], midY - 5, pal.fg);
+    centerText([best ? ('recorde: ' + best) : 'sem recorde'], midY + 15, pal.fg);
   }
 
   function renderCleared() {
     renderPlay();
     const pal = colors[theme];
-    fill(10, 20, SCREEN_W - 20, 24, pal.bg);
+    const boxW = SCREEN_W - 40, boxH = 30;
+    const boxX = (SCREEN_W - boxW) / 2, boxY = (SCREEN_H - boxH) / 2;
+    fill(boxX, boxY, boxW, boxH, pal.bg);
     ctx.strokeStyle = pal.fg;
-    ctx.strokeRect(10, 20, SCREEN_W - 20, 24);
-    centerText(['FASE CONCLUIDA', moves + ' movimentos'], 24, pal.fg);
+    ctx.strokeRect(boxX, boxY, boxW, boxH);
+    centerText(['FASE CONCLUIDA', moves + ' movimentos'], boxY + 6, pal.fg);
   }
 
   function render() {
