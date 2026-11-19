@@ -2,9 +2,6 @@
   --lcd-bg: #9bbf8f;
   --lcd-fg: #16321a;
   --case: #2b2d2f;
-  --case-dark: #1a1b1c;
-  --key: #3b3e40;
-  --key-text: #e8e8e8;
 }
 
 * { box-sizing: border-box; }
@@ -31,115 +28,30 @@ body {
 h1 { margin: 0; font-size: 1.4rem; letter-spacing: 0.05em; }
 .subtitle { margin: 0 0 8px; color: #999; font-size: 0.85rem; text-align: center; max-width: 320px; }
 
-.phone {
-  width: 260px;
-  background: linear-gradient(180deg, var(--case), var(--case-dark));
-  border-radius: 22px;
-  padding: 16px 14px 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-.earpiece {
-  width: 50px;
-  height: 6px;
-  border-radius: 4px;
-  background: #111;
-}
-
 .screen-bezel {
   background: #0c0f0c;
-  border-radius: 6px;
-  padding: 8px;
-  box-shadow: inset 0 0 0 2px #050605;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: inset 0 0 0 2px #050605, 0 10px 30px rgba(0,0,0,0.5);
 }
 
 #screen {
   display: block;
-  width: 294px;
-  height: 192px;
+  width: min(88vw, 588px);
+  height: calc(min(88vw, 588px) * 64 / 98);
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
   background: var(--lcd-bg);
 }
 
-.softkeys {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.softkey {
-  flex: 1;
-  background: var(--key);
-  color: var(--key-text);
-  border: none;
-  border-radius: 10px;
-  padding: 6px 4px;
-  font-size: 0.7rem;
-  cursor: pointer;
-}
-.softkey:active { background: #555; }
-
-.callkeys {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.callkey {
-  flex: 1;
-  border: none;
-  border-radius: 999px;
-  padding: 6px 4px;
-  font-size: 0.68rem;
-  color: #fff;
-  cursor: pointer;
-}
-.callkey.green { background: #2e7d32; }
-.callkey.green:active { background: #1b5e20; }
-.callkey.red { background: #b71c1c; }
-.callkey.red:active { background: #7f0000; }
-
-.keypad {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  width: 100%;
-}
-
-.key {
-  position: relative;
-  background: var(--key);
-  color: var(--key-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 0 8px;
-  font-size: 0.95rem;
-  cursor: pointer;
-}
-.key:active { background: #555; }
-.key.nav span {
-  position: absolute;
-  top: 2px;
-  right: 6px;
-  font-size: 0.55rem;
-  opacity: 0.75;
-}
-
 .controls-row {
-  margin-top: 10px;
+  margin-top: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  max-width: 360px;
+  max-width: 420px;
 }
 
 .pill {
@@ -158,9 +70,4 @@ h1 { margin: 0; font-size: 1.4rem; letter-spacing: 0.05em; }
   font-size: 0.72rem;
   text-align: center;
   line-height: 1.4;
-}
-
-@media (max-width: 420px) {
-  .phone { width: 220px; }
-  #screen { width: 196px; height: 128px; }
 }

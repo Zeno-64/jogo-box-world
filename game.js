@@ -272,25 +272,17 @@
 
   window.addEventListener('keydown', (e) => {
     const k = e.key;
-    if (k === 'ArrowUp') { handleDigit('2'); e.preventDefault(); }
-    else if (k === 'ArrowDown') { handleDigit('8'); e.preventDefault(); }
-    else if (k === 'ArrowLeft') { handleDigit('4'); e.preventDefault(); }
-    else if (k === 'ArrowRight') { handleDigit('6'); e.preventDefault(); }
+    if (k === 'ArrowUp' || k === 'w' || k === 'W') { handleDigit('2'); e.preventDefault(); }
+    else if (k === 'ArrowDown' || k === 's' || k === 'S') { handleDigit('8'); e.preventDefault(); }
+    else if (k === 'ArrowLeft' || k === 'a' || k === 'A') { handleDigit('4'); e.preventDefault(); }
+    else if (k === 'ArrowRight' || k === 'd' || k === 'D') { handleDigit('6'); e.preventDefault(); }
     else if (k === '2' || k === '4' || k === '6' || k === '8' || k === '5') handleDigit(k);
-    else if (k === '*' || e.code === 'NumpadMultiply' || k === 's' || k === 'S') handleDigit('*');
+    else if (k === '*' || e.code === 'NumpadMultiply') handleDigit('*');
     else if (k === 'Backspace' || k === 'z' || k === 'Z') { softLeft(); e.preventDefault(); }
     else if (k === 'Enter') softRight();
     else if (k === 'r' || k === 'R') greenCall();
     else if (k === 'Escape') redEnd();
   });
-
-  document.querySelectorAll('.key').forEach((btn) => {
-    btn.addEventListener('click', () => handleDigit(btn.dataset.key));
-  });
-  document.getElementById('softLeft').addEventListener('click', softLeft);
-  document.getElementById('softRight').addEventListener('click', softRight);
-  document.getElementById('callGreen').addEventListener('click', greenCall);
-  document.getElementById('callRed').addEventListener('click', redEnd);
 
   const lightBtn = document.getElementById('toggleLight');
   lightBtn.addEventListener('click', () => {
