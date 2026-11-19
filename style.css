@@ -71,3 +71,47 @@ h1 { margin: 0; font-size: 1.4rem; letter-spacing: 0.05em; }
   text-align: center;
   line-height: 1.4;
 }
+
+.touch-controls {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+}
+
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 46px);
+  grid-template-rows: repeat(3, 46px);
+  gap: 4px;
+}
+.dpad .up { grid-column: 2; grid-row: 1; }
+.dpad .left { grid-column: 1; grid-row: 2; }
+.dpad .right { grid-column: 3; grid-row: 2; }
+.dpad .down { grid-column: 2; grid-row: 3; }
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 74px);
+  gap: 8px;
+}
+
+.dbtn, .abtn {
+  background: #2b2d2f;
+  color: #eee;
+  border: 1px solid #444;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+.dbtn:active, .abtn:active { background: #46494c; }
+
+.dbtn { font-size: 1.2rem; }
+.abtn { height: 46px; font-size: 0.75rem; padding: 0 4px; }

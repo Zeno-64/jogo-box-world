@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>Box World</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -17,7 +17,22 @@
 
     <div class="controls-row">
       <button id="toggleLight" class="pill">Luz: verde</button>
-      <span class="hint">WASD ou setas move · Backspace desfaz · R reinicia · * mostra status · Esc abre o menu</span>
+      <span class="hint">WASD, setas ou os botoes abaixo movem · Voltar desfaz · OK confirma/status · Menu abre o menu · Reiniciar reinicia a fase</span>
+    </div>
+
+    <div class="touch-controls">
+      <div class="dpad">
+        <button type="button" class="dbtn up" data-dir="2" aria-label="Cima">&#9650;</button>
+        <button type="button" class="dbtn left" data-dir="4" aria-label="Esquerda">&#9664;</button>
+        <button type="button" class="dbtn right" data-dir="6" aria-label="Direita">&#9654;</button>
+        <button type="button" class="dbtn down" data-dir="8" aria-label="Baixo">&#9660;</button>
+      </div>
+      <div class="action-buttons">
+        <button type="button" id="btnUndo" class="abtn">Voltar</button>
+        <button type="button" id="btnOk" class="abtn">OK</button>
+        <button type="button" id="btnMenu" class="abtn">Menu</button>
+        <button type="button" id="btnRestart" class="abtn">Reiniciar</button>
+      </div>
     </div>
   </div>
 

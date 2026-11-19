@@ -290,6 +290,20 @@
     lightBtn.textContent = 'Luz: ' + (theme === 'green' ? 'verde' : 'azul');
   });
 
+  function bindPress(id, fn) {
+    const el = document.getElementById(id);
+    el.addEventListener('pointerdown', (e) => { e.preventDefault(); fn(); });
+  }
+
+  document.querySelectorAll('.dbtn').forEach((btn) => {
+    btn.addEventListener('pointerdown', (e) => { e.preventDefault(); handleDigit(btn.dataset.dir); });
+  });
+
+  bindPress('btnUndo', softLeft);
+  bindPress('btnOk', () => handleDigit('5'));
+  bindPress('btnMenu', softRight);
+  bindPress('btnRestart', greenCall);
+
   // ---- rendering ----
   function fill(x, y, w, h, c) { ctx.fillStyle = c; ctx.fillRect(x, y, w, h); }
 
